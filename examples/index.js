@@ -145,18 +145,47 @@ console.log(round5(-3));
 
 // Функция uniquePoints, принимает массив объектов и вовращает массив уникальных объектов.
 
-function uniquePoints(arr) {
-
-}
+function uniquePoints(arr) {}
 
 const arr3 = [
-  {x: 5, y: 10},
-  {x: 1, y: 15},
-  {x: 7, y: -5},
-  {x: 16, y: 33},
-  {x: 1, y: 15},
-  {x: 7, y: -5},
-  {x: 4, y: 12}
+  { x: 5, y: 10 },
+  { x: 1, y: 15 },
+  { x: 7, y: -5 },
+  { x: 16, y: 33 },
+  { x: 1, y: 15 },
+  { x: 7, y: -5 },
+  { x: 4, y: 12 },
 ];
- 
-console.log(uniquePoints(arr3))
+
+console.log(uniquePoints(arr3));
+
+//========================================
+
+const baseURL = "https://jsonplaceholder.typicode.com/todos";
+
+const fetchTodos = () => {
+  console.log("Fetch started");
+  return fetch(baseURL).then((response) => response.json());
+};
+
+fetchTodos().then((data) => console.log(data[21]));
+
+//=====================================
+
+const fetchAsyncTodos = async () => {
+  try {
+    console.log("AsyncFetch started...");
+    const response = await fetch(baseURL);
+    const data = await response.json();
+    console.log("asyncData: ", data);
+    return data;
+  } catch (error) {
+    console.error(error);
+  } finally {
+    console.log("AsyncFetch done.");
+  }
+};
+
+fetchAsyncTodos().then((data) => console.log("dataItem: ", data[34]));
+
+//==========================================
